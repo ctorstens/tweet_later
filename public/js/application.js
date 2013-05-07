@@ -1,7 +1,15 @@
-$(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
+$(document).on('submit','.send_tweet',function(e){
+    e.preventDefault();
+    $.ajax({
+      type: 'post',
+      url: '/tweet/post',
+      data: $(this).serialize()
+    }).done( function(){
+      console.log("you're tweet was sent!")
+    });
+  });
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+
+
+$(document).ready(function(){
+  });
