@@ -9,3 +9,7 @@ button a {
   text-decoration: none;
   color: black;
 }
+
+#tweet_messanger_status p {
+  color: blue;
+}
