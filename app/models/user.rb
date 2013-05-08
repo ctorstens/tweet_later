@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   validates :username, :uniqueness => true
 
   def tweet(status)
-    puts "PERFORM tweet status XXXXXXXXXXXXXXXXXX"
-      tweet = tweets.create!(:status => status)
-      TweetWorker.perform_async(tweet.id)
-    end
+    tweet = tweets.create!(:status => status)
+    TweetWorker.perform_async(tweet.id)
+  end
 end

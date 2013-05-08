@@ -34,8 +34,15 @@ post '/tweet/post' do
     :oauth_token => @user.oauth_token,
     :oauth_token_secret => @user.oauth_secret
     )
-  @client.update(params[:tweet])
+
+  # Create tweet object, which is attached to user && Send tweet object to tweet worker for database placement
+  @the_job_id = @user.tweet(params[:tweet])
 
 end
 
 
+# get '/status/:job_id' do 
+#   the_job_id = params[:job_id]
+#   TweetWorker.find(the_job_id).job_is_complete(the_job_id)
+#   # return the status of a job to an AJAX call
+# end
