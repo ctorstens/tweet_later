@@ -36,14 +36,14 @@ post '/tweet/post' do
   #   )
 
   # Create tweet object, which is attached to user && Send tweet object to tweet worker for database placement
-  @the_job_id = @user.tweet(params[:tweet])
+  @the_job_id = @user.tweet(params[:tweet], 3)
 
 end
 
 
 get '/status/:job_id' do 
   
-  puts "HEYYYYYYY should return jid"
+  # puts "HEYYYYYYY should return jid"
   job_is_complete(params[:job_id]).to_s
   # puts TweetWorker.job_is_complete(the_job_id)
   # return the status of a job to an AJAX call
